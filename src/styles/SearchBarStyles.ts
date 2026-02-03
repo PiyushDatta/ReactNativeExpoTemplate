@@ -4,9 +4,9 @@ import { uiTokens } from "../config/uiSettings";
 export const createSearchBarStyles = () =>
   StyleSheet.create({
     container: {
-      borderWidth: 1,
       borderColor: "#d4d4d4",
       borderRadius: uiTokens.radius(12),
+      borderWidth: 1,
       paddingHorizontal: uiTokens.spacing(12),
       paddingVertical: uiTokens.spacing(8),
     },

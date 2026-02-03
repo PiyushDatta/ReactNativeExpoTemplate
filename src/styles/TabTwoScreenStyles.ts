@@ -15,7 +15,7 @@ export const createTabTwoScreenStyles = () =>
       marginBottom: uiTokens.spacing(8),
     },
     subtitle: {
-      fontSize: uiTokens.font(14),
       color: "#555555",
+      fontSize: uiTokens.font(14),
     },
   });

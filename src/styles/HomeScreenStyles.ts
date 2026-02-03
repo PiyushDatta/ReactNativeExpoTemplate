@@ -5,9 +5,9 @@ export const createHomeScreenStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
-      padding: uiTokens.spacing(24),
-      gap: uiTokens.spacing(16),
       backgroundColor: "#fff",
+      gap: uiTokens.spacing(16),
+      padding: uiTokens.spacing(24),
     },
     mainHeader: {
       alignItems: "center",
@@ -28,9 +28,9 @@ export const createHomeScreenStyles = () =>
       paddingTop: uiTokens.spacing(8),
     },
     listItem: {
-      padding: uiTokens.spacing(14),
-      borderRadius: uiTokens.radius(12),
       backgroundColor: "#f3f3f3",
+      borderRadius: uiTokens.radius(12),
+      padding: uiTokens.spacing(14),
     },
     listItemText: {
       fontSize: uiTokens.font(16),
