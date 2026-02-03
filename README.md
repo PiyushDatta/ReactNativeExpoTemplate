@@ -8,6 +8,20 @@ Opinionated minimal React Native + Expo starter with optional UI controlled by f
 2. `bun run start`
 3. Optional platforms: `bun run android`, `bun run ios`, `bun run web`
 
+## Tests
+
+Run all tests:
+
+- `bun run test`
+
+This uses Bun's test runner and preloads `tests/setup.ts` for React Native mocks.
+
+## Format
+
+Format all files with Prettier:
+
+- `bun run format`
+
 ## Features
 
 Feature flags are driven by `.env` and read in `src/config/features.ts`. Use these keys:
@@ -16,7 +30,7 @@ Feature flags are driven by `.env` and read in `src/config/features.ts`. Use the
 - `EXPO_PUBLIC_FEATURE_SAMPLE_LIST`
 - `EXPO_PUBLIC_FEATURE_TABS`
 
-All flags default to `false`. With all flags off, the home screen is empty by design.
+All flags default to `false`. `MainScreen` always renders, and feature flags add optional UI.
 
 ## Important Notes
 
@@ -46,6 +60,12 @@ For iOS runtime cases where `FormData` is missing at startup, a small polyfill i
 
 **WebSocket**
 If the runtime reports `WebSocket` missing at startup, `polyfills.js` installs a polyfill from `react-native` and logs the result in development.
+
+## Maintenance
+
+Clean install (remove caches and reinstall):
+
+- `bun run clean`
 
 ## Structure
 
