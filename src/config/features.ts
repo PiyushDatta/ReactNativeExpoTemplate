@@ -8,7 +8,7 @@ const readEnvFlag = (value: string | undefined, fallback: boolean) => {
 };
 
 export const computeFeatures = (
-  env: Record<string, string | undefined> = process.env
+  env: Record<string, string | undefined> = process.env,
 ) =>
   ({
     enableSearchBar: readEnvFlag(env.EXPO_PUBLIC_FEATURE_SEARCH, false),

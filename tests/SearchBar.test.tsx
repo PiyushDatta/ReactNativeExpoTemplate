@@ -7,7 +7,7 @@ import { SearchBar } from "../src/components/SearchBar";
 describe("SearchBar", () => {
   it("renders with placeholder", () => {
     const { getByPlaceholderText } = render(
-      <SearchBar placeholder="Search here" onChangeText={() => {}} />
+      <SearchBar placeholder="Search here" onChangeText={() => {}} />,
     );
 
     expect(getByPlaceholderText("Search here")).toBeTruthy();
@@ -16,7 +16,10 @@ describe("SearchBar", () => {
   it("calls onChangeText when typing", () => {
     let latest = "";
     const { getByPlaceholderText } = render(
-      <SearchBar placeholder="Search" onChangeText={(value) => (latest = value)} />
+      <SearchBar
+        placeholder="Search"
+        onChangeText={(value) => (latest = value)}
+      />,
     );
 
     const input = getByPlaceholderText("Search");

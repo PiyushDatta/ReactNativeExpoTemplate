@@ -16,8 +16,16 @@ export function TabbedRoot() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Main" component={HomeScreen} options={{ title: "Main" }} />
-        <Tab.Screen name="TabOne" component={TabOneScreen} options={{ title: "Tab 1" }} />
+        <Tab.Screen
+          name="Main"
+          component={HomeScreen}
+          options={{ title: "Main" }}
+        />
+        <Tab.Screen
+          name="TabOne"
+          component={TabOneScreen}
+          options={{ title: "Tab 1" }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

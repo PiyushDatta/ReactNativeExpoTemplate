@@ -9,8 +9,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
  * Allow tests to switch platforms:
  *   globalThis.__TEST_PLATFORM__ = "web" | "ios" | "android"
  */
-const getPlatform = () =>
-  (globalThis as any).__TEST_PLATFORM__ ?? "web";
+const getPlatform = () => (globalThis as any).__TEST_PLATFORM__ ?? "web";
 
 /**
  * react-native mock
@@ -44,9 +43,9 @@ mock.module("react-native", () => {
         React.createElement(
           React.Fragment,
           { key: keyExtractor?.(item) ?? index },
-          renderItem({ item, index })
-        )
-      )
+          renderItem({ item, index }),
+        ),
+      ),
     );
 
   const StyleSheet = {
@@ -63,8 +62,7 @@ mock.module("react-native", () => {
     get OS() {
       return getPlatform();
     },
-    select: (spec: Record<string, any>) =>
-      spec[getPlatform()] ?? spec.default,
+    select: (spec: Record<string, any>) => spec[getPlatform()] ?? spec.default,
   };
   const I18nManager = {
     allowRTL: () => {},

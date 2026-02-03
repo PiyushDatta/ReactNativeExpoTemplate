@@ -12,9 +12,9 @@ Opinionated minimal React Native + Expo starter with optional UI controlled by f
 
 Feature flags are driven by `.env` and read in `src/config/features.ts`. Use these keys:
 
--   `EXPO_PUBLIC_FEATURE_SEARCH`
--   `EXPO_PUBLIC_FEATURE_SAMPLE_LIST`
--   `EXPO_PUBLIC_FEATURE_TABS`
+- `EXPO_PUBLIC_FEATURE_SEARCH`
+- `EXPO_PUBLIC_FEATURE_SAMPLE_LIST`
+- `EXPO_PUBLIC_FEATURE_TABS`
 
 All flags default to `false`. With all flags off, the home screen is empty by design.
 
@@ -24,10 +24,10 @@ All flags default to `false`. With all flags off, the home screen is empty by de
 Create a local `.env` file by copying `.env.example`. Use `EXPO_PUBLIC_` for any values that must be available in the app bundle.
 Suggested keys (optional):
 
--   `EXPO_PUBLIC_API_BASE_URL`
--   `EXPO_PUBLIC_FEATURE_TABS`
--   `EXPO_PUBLIC_FEATURE_SEARCH`
--   `EXPO_PUBLIC_FEATURE_SAMPLE_LIST`
+- `EXPO_PUBLIC_API_BASE_URL`
+- `EXPO_PUBLIC_FEATURE_TABS`
+- `EXPO_PUBLIC_FEATURE_SEARCH`
+- `EXPO_PUBLIC_FEATURE_SAMPLE_LIST`
 
 **Feature Flag Behavior**
 Flags are centralized in `src/config/features.ts` and read from `.env`. Values are normalized to booleans by treating `"true"` as enabled. Any missing or invalid value falls back to `false`.
@@ -49,9 +49,9 @@ If the runtime reports `WebSocket` missing at startup, `polyfills.js` installs a
 
 ## Structure
 
--   `App.tsx`: entry + feature toggles
--   `src/components`: reusable UI
--   `src/screens`: screens
--   `src/navigation`: navigation (optional)
--   `src/config`: app config/flags
--   `src/styles`: styles
+- `App.tsx`: entry + feature toggles
+- `src/components`: reusable UI
+- `src/screens`: screens
+- `src/navigation`: navigation (optional)
+- `src/config`: app config/flags
+- `src/styles`: styles

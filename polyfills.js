@@ -120,7 +120,9 @@ if (typeof global.WebSocket === "undefined") {
 
       if (typeof __DEV__ !== "undefined" && __DEV__) {
         // eslint-disable-next-line no-console
-        console.log("[polyfills] WebSocket was missing; polyfill installed from react-native.");
+        console.log(
+          "[polyfills] WebSocket was missing; polyfill installed from react-native.",
+        );
       }
     }
   } catch (e) {

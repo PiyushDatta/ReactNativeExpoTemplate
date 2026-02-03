@@ -9,7 +9,11 @@ type SearchBarProps = {
   value?: string;
 };
 
-export function SearchBar({ placeholder, onChangeText, value }: SearchBarProps) {
+export function SearchBar({
+  placeholder,
+  onChangeText,
+  value,
+}: SearchBarProps) {
   return (
     <View style={styles.container}>
       <TextInput
