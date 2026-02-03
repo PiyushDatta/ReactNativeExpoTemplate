@@ -34,6 +34,7 @@ export function HomeScreen() {
 
             {showList ? (
                 <FlatList
+                    testID="sample-list"
                     data={SAMPLE_ITEMS}
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => (
