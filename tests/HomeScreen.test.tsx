@@ -38,9 +38,11 @@ describe("HomeScreen", () => {
     featureState.enableSearchBar = false;
     featureState.enableSampleList = true;
 
-    const { getByText, getByTestId } = render(<HomeScreen />);
+    const { getByText } = render(<HomeScreen />);
 
     expect(getByText("MainScreen")).toBeTruthy();
-    expect(getByTestId("sample-list")).toBeTruthy();
+    expect(getByText("First item")).toBeTruthy();
+    expect(getByText("Second item")).toBeTruthy();
+    expect(getByText("Third item")).toBeTruthy();
   });
 });
