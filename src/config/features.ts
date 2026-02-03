@@ -14,6 +14,10 @@ export const computeFeatures = (
     enableSearchBar: readEnvFlag(env.EXPO_PUBLIC_FEATURE_SEARCH, false),
     enableTabs: readEnvFlag(env.EXPO_PUBLIC_FEATURE_TABS, false),
     enableSampleList: readEnvFlag(env.EXPO_PUBLIC_FEATURE_SAMPLE_LIST, false),
+    enableSettingsScreen: readEnvFlag(
+      env.EXPO_PUBLIC_FEATURE_SETTINGS_SCREEN,
+      false,
+    ),
   }) as const;
 
 export const features = computeFeatures();

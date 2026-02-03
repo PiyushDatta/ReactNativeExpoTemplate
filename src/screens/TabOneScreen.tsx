@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import styles from "../styles/TabOneScreenStyles";
+import { createTabOneScreenStyles } from "../styles/TabOneScreenStyles";
+import { useSettings } from "../context/SettingsContext";
 
 export function TabOneScreen() {
+  const { size } = useSettings();
+  const styles = useMemo(createTabOneScreenStyles, [size]);
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Tab One</Text>

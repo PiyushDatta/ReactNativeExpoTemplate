@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View, TextInput } from "react-native";
 
-import styles from "../styles/SearchBarStyles";
+import { createSearchBarStyles } from "../styles/SearchBarStyles";
+import { useSettings } from "../context/SettingsContext";
 
 type SearchBarProps = {
   placeholder?: string;
@@ -14,6 +15,9 @@ export function SearchBar({
   onChangeText,
   value,
 }: SearchBarProps) {
+  const { size } = useSettings();
+  const styles = useMemo(createSearchBarStyles, [size]);
+
   return (
     <View style={styles.container}>
       <TextInput

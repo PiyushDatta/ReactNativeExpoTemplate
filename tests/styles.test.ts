@@ -1,12 +1,13 @@
 import { describe, expect, it } from "bun:test";
 
-import appStyles from "../src/styles/HomeScreenStyles";
-import searchBarStyles from "../src/styles/SearchBarStyles";
-import tabOneStyles from "../src/styles/TabOneScreenStyles";
-import tabTwoStyles from "../src/styles/TabTwoScreenStyles";
+import { createHomeScreenStyles } from "../src/styles/HomeScreenStyles";
+import { createSearchBarStyles } from "../src/styles/SearchBarStyles";
+import { createTabOneScreenStyles } from "../src/styles/TabOneScreenStyles";
+import { createTabTwoScreenStyles } from "../src/styles/TabTwoScreenStyles";
 
 describe("styles", () => {
   it("HomeScreenStyles exposes expected keys", () => {
+    const appStyles = createHomeScreenStyles();
     expect(appStyles).toHaveProperty("container");
     expect(appStyles).toHaveProperty("mainHeader");
     expect(appStyles).toHaveProperty("mainOnly");
@@ -16,11 +17,14 @@ describe("styles", () => {
   });
 
   it("SearchBarStyles exposes expected keys", () => {
+    const searchBarStyles = createSearchBarStyles();
     expect(searchBarStyles).toHaveProperty("container");
     expect(searchBarStyles).toHaveProperty("input");
   });
 
   it("Tab styles expose expected keys", () => {
+    const tabOneStyles = createTabOneScreenStyles();
+    const tabTwoStyles = createTabTwoScreenStyles();
     expect(tabOneStyles).toHaveProperty("container");
     expect(tabOneStyles).toHaveProperty("title");
     expect(tabOneStyles).toHaveProperty("subtitle");

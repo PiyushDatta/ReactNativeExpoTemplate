@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View, FlatList, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { features } from "../config/features";
 import { SearchBar } from "../components/SearchBar";
-import styles from "../styles/HomeScreenStyles";
+import { createHomeScreenStyles } from "../styles/HomeScreenStyles";
+import { useSettings } from "../context/SettingsContext";
 
 type SampleItem = {
   id: string;
@@ -18,6 +19,8 @@ const SAMPLE_ITEMS: SampleItem[] = [
 ];
 
 export function HomeScreen() {
+  const { size } = useSettings();
+  const styles = useMemo(createHomeScreenStyles, [size]);
   const showSearch = features.enableSearchBar;
   const showList = features.enableSampleList;
   const showOnlyMain = !showSearch && !showList;

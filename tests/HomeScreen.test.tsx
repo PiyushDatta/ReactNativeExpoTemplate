@@ -1,6 +1,6 @@
 import React from "react";
 import { describe, expect, it, mock } from "bun:test";
-import { render } from "@testing-library/react-native";
+import { renderWithProviders } from "./utils/renderWithProviders";
 
 const featureState = {
   enableSearchBar: false,
@@ -19,7 +19,7 @@ describe("HomeScreen", () => {
     featureState.enableSearchBar = false;
     featureState.enableSampleList = false;
 
-    const { getByText } = render(<HomeScreen />);
+    const { getByText } = renderWithProviders(<HomeScreen />);
 
     expect(getByText("MainScreen")).toBeTruthy();
   });
@@ -28,7 +28,9 @@ describe("HomeScreen", () => {
     featureState.enableSearchBar = true;
     featureState.enableSampleList = false;
 
-    const { getByText, getByPlaceholderText } = render(<HomeScreen />);
+    const { getByText, getByPlaceholderText } = renderWithProviders(
+      <HomeScreen />,
+    );
 
     expect(getByText("MainScreen")).toBeTruthy();
     expect(getByPlaceholderText("Search...")).toBeTruthy();
@@ -38,7 +40,7 @@ describe("HomeScreen", () => {
     featureState.enableSearchBar = false;
     featureState.enableSampleList = true;
 
-    const { getByText } = render(<HomeScreen />);
+    const { getByText } = renderWithProviders(<HomeScreen />);
 
     expect(getByText("MainScreen")).toBeTruthy();
     expect(getByText("First item")).toBeTruthy();

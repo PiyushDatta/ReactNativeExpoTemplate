@@ -1,12 +1,13 @@
 import React from "react";
 import { describe, expect, it } from "bun:test";
-import { render, fireEvent } from "@testing-library/react-native";
+import { fireEvent } from "@testing-library/react-native";
 
 import { SearchBar } from "../src/components/SearchBar";
+import { renderWithProviders } from "./utils/renderWithProviders";
 
 describe("SearchBar", () => {
   it("renders with placeholder", () => {
-    const { getByPlaceholderText } = render(
+    const { getByPlaceholderText } = renderWithProviders(
       <SearchBar placeholder="Search here" onChangeText={() => {}} />,
     );
 
@@ -15,7 +16,7 @@ describe("SearchBar", () => {
 
   it("calls onChangeText when typing", () => {
     let latest = "";
-    const { getByPlaceholderText } = render(
+    const { getByPlaceholderText } = renderWithProviders(
       <SearchBar
         placeholder="Search"
         onChangeText={(value) => (latest = value)}

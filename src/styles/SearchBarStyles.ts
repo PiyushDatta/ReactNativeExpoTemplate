@@ -1,16 +1,16 @@
 import { StyleSheet } from "react-native";
+import { uiTokens } from "../config/uiSettings";
 
-const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-    borderColor: "#d4d4d4",
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-  },
-  input: {
-    fontSize: 16,
-  },
-});
-
-export default styles;
+export const createSearchBarStyles = () =>
+  StyleSheet.create({
+    container: {
+      borderWidth: 1,
+      borderColor: "#d4d4d4",
+      borderRadius: uiTokens.radius(12),
+      paddingHorizontal: uiTokens.spacing(12),
+      paddingVertical: uiTokens.spacing(8),
+    },
+    input: {
+      fontSize: uiTokens.font(16),
+    },
+  });

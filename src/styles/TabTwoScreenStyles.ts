@@ -1,21 +1,21 @@
 import { StyleSheet } from "react-native";
+import { uiTokens } from "../config/uiSettings";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 24,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: "600",
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 14,
-    color: "#555555",
-  },
-});
-
-export default styles;
+export const createTabTwoScreenStyles = () =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      padding: uiTokens.spacing(24),
+    },
+    title: {
+      fontSize: uiTokens.font(22),
+      fontWeight: "600",
+      marginBottom: uiTokens.spacing(8),
+    },
+    subtitle: {
+      fontSize: uiTokens.font(14),
+      color: "#555555",
+    },
+  });
