@@ -30,6 +30,7 @@ Feature flags are driven by `.env` and read in `src/config/features.ts`. Use the
 - `EXPO_PUBLIC_FEATURE_SAMPLE_LIST`
 - `EXPO_PUBLIC_FEATURE_TABS`
 - `EXPO_PUBLIC_FEATURE_SETTINGS_SCREEN`
+- `EXPO_PUBLIC_FEATURE_MEDIA_SCREEN`
 
 All flags default to `false`. `MainScreen` always renders, and feature flags add optional UI.
 
@@ -44,6 +45,7 @@ Suggested keys (optional):
 - `EXPO_PUBLIC_FEATURE_SEARCH`
 - `EXPO_PUBLIC_FEATURE_SAMPLE_LIST`
 - `EXPO_PUBLIC_FEATURE_SETTINGS_SCREEN`
+- `EXPO_PUBLIC_FEATURE_MEDIA_SCREEN`
 
 **Feature Flag Behavior**
 Flags are centralized in `src/config/features.ts` and read from `.env`. Values are normalized to booleans by treating `"true"` as enabled. Any missing or invalid value falls back to `false`.

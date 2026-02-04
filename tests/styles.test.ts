@@ -2,6 +2,7 @@ import { describe, expect, it } from "bun:test";
 
 import { createHomeScreenStyles } from "../src/styles/HomeScreenStyles";
 import { createSearchBarStyles } from "../src/styles/SearchBarStyles";
+import { createMediaScrollStyles } from "../src/styles/MediaScrollScreenStyles";
 import { createTabOneScreenStyles } from "../src/styles/TabOneScreenStyles";
 import { createTabTwoScreenStyles } from "../src/styles/TabTwoScreenStyles";
 
@@ -32,5 +33,13 @@ describe("styles", () => {
     expect(tabTwoStyles).toHaveProperty("container");
     expect(tabTwoStyles).toHaveProperty("title");
     expect(tabTwoStyles).toHaveProperty("subtitle");
+  });
+
+  it("Media scroll styles expose expected keys", () => {
+    const mediaStyles = createMediaScrollStyles();
+    expect(mediaStyles).toHaveProperty("container");
+    expect(mediaStyles).toHaveProperty("card");
+    expect(mediaStyles).toHaveProperty("media");
+    expect(mediaStyles).toHaveProperty("videoOverlay");
   });
 });

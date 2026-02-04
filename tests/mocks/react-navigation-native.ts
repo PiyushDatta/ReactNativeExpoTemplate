@@ -11,5 +11,8 @@ mock.module("@react-navigation/native", () => {
         removeListener: () => {},
       },
     }),
+    useNavigation: () => ({
+      navigate: () => {},
+    }),
   };
 });

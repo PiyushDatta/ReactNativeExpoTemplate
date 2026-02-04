@@ -8,6 +8,7 @@ describe("features", () => {
     expect(features.enableSearchBar).toBe(false);
     expect(features.enableSampleList).toBe(false);
     expect(features.enableTabs).toBe(false);
+    expect(features.enableMediaScreen).toBe(false);
   });
 
   it("enables flags when env is true", () => {
@@ -15,11 +16,13 @@ describe("features", () => {
       EXPO_PUBLIC_FEATURE_SEARCH: "true",
       EXPO_PUBLIC_FEATURE_SAMPLE_LIST: "true",
       EXPO_PUBLIC_FEATURE_TABS: "true",
+      EXPO_PUBLIC_FEATURE_MEDIA_SCREEN: "true",
     });
 
     expect(features.enableSearchBar).toBe(true);
     expect(features.enableSampleList).toBe(true);
     expect(features.enableTabs).toBe(true);
+    expect(features.enableMediaScreen).toBe(true);
   });
 
   it("treats non-true values as false", () => {
@@ -27,10 +30,12 @@ describe("features", () => {
       EXPO_PUBLIC_FEATURE_SEARCH: "1",
       EXPO_PUBLIC_FEATURE_SAMPLE_LIST: "yes",
       EXPO_PUBLIC_FEATURE_TABS: "false",
+      EXPO_PUBLIC_FEATURE_MEDIA_SCREEN: "no",
     });
 
     expect(features.enableSearchBar).toBe(false);
     expect(features.enableSampleList).toBe(false);
     expect(features.enableTabs).toBe(false);
+    expect(features.enableMediaScreen).toBe(false);
   });
 });

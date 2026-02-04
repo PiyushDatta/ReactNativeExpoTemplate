@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { HomeScreen } from "../screens/HomeScreen";
+import { MediaScrollScreen } from "../screens/MediaScrollScreen";
 import { SettingsScreen } from "../screens/SettingsScreen";
 import { TabOneScreen } from "../screens/TabOneScreen";
 import { features } from "../config/features";
@@ -10,6 +11,7 @@ import { features } from "../config/features";
 type TabsParamList = {
   Main: undefined;
   TabOne: undefined;
+  Media: undefined;
   Settings: undefined;
 };
 
@@ -29,6 +31,17 @@ export function TabbedRoot() {
           component={TabOneScreen}
           options={{ title: "Tab 1" }}
         />
+        {features.enableMediaScreen ? (
+          <Tab.Screen
+            name="Media"
+            component={MediaScrollScreen}
+            options={{
+              title: "Media Scroll",
+              headerShown: false,
+              tabBarStyle: { display: "none" },
+            }}
+          />
+        ) : null}
         {features.enableSettingsScreen ? (
           <Tab.Screen
             name="Settings"

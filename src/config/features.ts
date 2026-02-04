@@ -18,6 +18,7 @@ export const computeFeatures = (
       env.EXPO_PUBLIC_FEATURE_SETTINGS_SCREEN,
       false,
     ),
+    enableMediaScreen: readEnvFlag(env.EXPO_PUBLIC_FEATURE_MEDIA_SCREEN, false),
   }) as const;
 
 export const features = computeFeatures();
