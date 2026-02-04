@@ -15,7 +15,9 @@ mock.module("../src/config/features", () => ({
 }));
 
 const loadTabbedRoot = async () => {
-  const module = await import(`../src/navigation/TabbedRoot?test=${Date.now()}`);
+  const module = await import(
+    `../src/navigation/TabbedRoot?test=${Date.now()}`
+  );
   return module.TabbedRoot;
 };
 

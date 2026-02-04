@@ -75,7 +75,10 @@ const SAMPLE_POSTS: Post[] = [
   },
 ];
 
-const renderMedia = (post: Post, styles: ReturnType<typeof createMediaScrollStyles>) => {
+const renderMedia = (
+  post: Post,
+  styles: ReturnType<typeof createMediaScrollStyles>,
+) => {
   if (post.type === "text") {
     return null;
   }
@@ -85,7 +88,9 @@ const renderMedia = (post: Post, styles: ReturnType<typeof createMediaScrollStyl
       <View style={styles.mediaWrapper}>
         <Image
           style={styles.media}
-          source={{ uri: post.mediaUrl ?? "https://picsum.photos/600/400?random=1" }}
+          source={{
+            uri: post.mediaUrl ?? "https://picsum.photos/600/400?random=1",
+          }}
           resizeMode="cover"
         />
       </View>
@@ -93,12 +98,18 @@ const renderMedia = (post: Post, styles: ReturnType<typeof createMediaScrollStyl
   }
 
   const thumbnail =
-    post.videoThumbnail ?? post.mediaUrl ?? "https://picsum.photos/600/400?random=2";
+    post.videoThumbnail ??
+    post.mediaUrl ??
+    "https://picsum.photos/600/400?random=2";
 
   return (
     <View style={styles.videoStub}>
       <View style={styles.mediaWrapper}>
-        <Image style={styles.media} source={{ uri: thumbnail }} resizeMode="cover" />
+        <Image
+          style={styles.media}
+          source={{ uri: thumbnail }}
+          resizeMode="cover"
+        />
       </View>
       <View style={styles.videoOverlay}>
         <Text style={styles.videoLabel}>Play</Text>
