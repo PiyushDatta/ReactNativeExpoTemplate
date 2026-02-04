@@ -8,3 +8,4 @@ import "./mocks/react-native";
 import "./mocks/react-native-safe-area-context";
 import "./mocks/react-navigation-native";
 import "./mocks/react-navigation-bottom-tabs";
+import "./mocks/slider";

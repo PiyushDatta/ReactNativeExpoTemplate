@@ -6,14 +6,17 @@ import { ProfileScreen } from "../src/screens/ProfileScreen";
 
 describe("ProfileScreen", () => {
   it("renders profile header and settings section", () => {
-    const { getByText } = renderWithProviders(<ProfileScreen />);
+    const { getByText, getAllByText } = renderWithProviders(<ProfileScreen />);
 
     expect(getByText("Taylor Avery")).toBeTruthy();
     expect(getByText("@taylor")).toBeTruthy();
     expect(getByText("Profile Settings")).toBeTruthy();
     expect(getByText("App Settings")).toBeTruthy();
-    expect(getByText("small")).toBeTruthy();
-    expect(getByText("medium")).toBeTruthy();
-    expect(getByText("large")).toBeTruthy();
+    expect(getAllByText("small").length).toBeGreaterThan(0);
+    expect(getAllByText("medium").length).toBeGreaterThan(0);
+    expect(getAllByText("large").length).toBeGreaterThan(0);
+    expect(getByText("Drag Elasticity")).toBeTruthy();
+    expect(getByText("Firm")).toBeTruthy();
+    expect(getByText("Soft")).toBeTruthy();
   });
 });

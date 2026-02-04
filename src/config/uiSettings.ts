@@ -23,6 +23,7 @@ const PLATFORM_SCALE = Platform.select({
 
 export const uiSettings = {
   size: "medium" as UiSize,
+  elasticity: 0.3,
   platformScale: PLATFORM_SCALE,
 };
 

@@ -32,6 +32,7 @@ Feature flags are driven by `.env` and read in `src/config/features.ts`. Use the
 - `EXPO_PUBLIC_FEATURE_SETTINGS_SCREEN`
 - `EXPO_PUBLIC_FEATURE_MEDIA_SCREEN`
 - `EXPO_PUBLIC_FEATURE_PROFILE_SCREEN`
+- `EXPO_PUBLIC_FEATURE_KNOWLEDGE_GRAPH_SCREEN`
 
 All flags default to `false`. `MainScreen` always renders, and feature flags add optional UI.
 
@@ -48,6 +49,7 @@ Suggested keys (optional):
 - `EXPO_PUBLIC_FEATURE_SETTINGS_SCREEN`
 - `EXPO_PUBLIC_FEATURE_MEDIA_SCREEN`
 - `EXPO_PUBLIC_FEATURE_PROFILE_SCREEN`
+- `EXPO_PUBLIC_FEATURE_KNOWLEDGE_GRAPH_SCREEN`
 
 **Feature Flag Behavior**
 Flags are centralized in `src/config/features.ts` and read from `.env`. Values are normalized to booleans by treating `"true"` as enabled. Any missing or invalid value falls back to `false`.
@@ -80,10 +82,37 @@ Clean install (remove caches and reinstall):
 - `Media Scroll` (feature‑gated): Social feed with media cards and custom top/bottom nav.
 - `Profile` (feature‑gated): Profile summary and app settings.
 - `Settings` (feature‑gated): App settings, currently UI size.
+- `Knowledge Graph` (feature‑gated): Drag‑to‑pan semantic node map (can be fed by backend data; uses defaults for now).
+
+### Knowledge Graph Data Example
+
+Fetch graph data from your backend and pass it into the screen:
+
+```ts
+import React, { useEffect, useState } from "react";
+import { KnowledgeGraphScreen } from "./src/screens/KnowledgeGraphScreen";
+
+type GraphData = {
+  nodes: { id: string; label: string; x: number; y: number; size: number; tone: "primary" | "secondary" | "accent" }[];
+  edges: { from: string; to: string; strength: 1 | 2 | 3 }[];
+};
+
+export function KnowledgeGraphContainer() {
+  const [data, setData] = useState<GraphData | undefined>();
+
+  useEffect(() => {
+    fetch("https://api.example.com/graph")
+      .then((res) => res.json())
+      .then((json) => setData(json));
+  }, []);
+
+  return <KnowledgeGraphScreen data={data} />;
+}
+```
 
 ## Settings System
 
-UI sizing is managed by `SettingsContext` and `uiSettings`. Changing size re-renders styles via factory functions (e.g., `createHomeScreenStyles`) so tokens update immediately.
+UI sizing and drag elasticity are managed by `SettingsContext` and `uiSettings`. Changing size re-renders styles via factory functions (e.g., `createHomeScreenStyles`) so tokens update immediately. Drag elasticity controls the Knowledge Graph pan “rubber-band” feel and is adjustable via a slider in Settings/Profile.
 
 ## Structure
 

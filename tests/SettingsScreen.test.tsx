@@ -12,20 +12,22 @@ const SettingsValue = () => {
 
 describe("SettingsScreen", () => {
   it("renders size options and updates size", () => {
-    const { getByText } = renderWithProviders(
+    const { getAllByText, getByText } = renderWithProviders(
       <>
         <SettingsScreen />
         <SettingsValue />
       </>,
     );
 
-    expect(getByText("small")).toBeTruthy();
-    expect(getByText("medium")).toBeTruthy();
-    expect(getByText("large")).toBeTruthy();
-    expect(getByText("medium")).toBeTruthy();
+    expect(getAllByText("small").length).toBeGreaterThan(0);
+    expect(getAllByText("medium").length).toBeGreaterThan(0);
+    expect(getAllByText("large").length).toBeGreaterThan(0);
+    expect(getByText("Drag Elasticity")).toBeTruthy();
+    expect(getByText("Firm")).toBeTruthy();
+    expect(getByText("Soft")).toBeTruthy();
+    expect(getAllByText("medium").length).toBeGreaterThan(0);
 
-    fireEvent.press(getByText("large"));
-
-    expect(getByText("large")).toBeTruthy();
+    fireEvent.press(getAllByText("large")[0]);
+    expect(getAllByText("large").length).toBeGreaterThan(0);
   });
 });

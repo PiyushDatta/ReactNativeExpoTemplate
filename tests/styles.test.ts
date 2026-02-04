@@ -3,6 +3,7 @@ import { describe, expect, it } from "bun:test";
 import { createHomeScreenStyles } from "../src/styles/HomeScreenStyles";
 import { createSearchBarStyles } from "../src/styles/SearchBarStyles";
 import { createMediaScrollStyles } from "../src/styles/MediaScrollScreenStyles";
+import { createKnowledgeGraphStyles } from "../src/styles/KnowledgeGraphScreenStyles";
 import { createTabOneScreenStyles } from "../src/styles/TabOneScreenStyles";
 import { createTabTwoScreenStyles } from "../src/styles/TabTwoScreenStyles";
 
@@ -41,5 +42,13 @@ describe("styles", () => {
     expect(mediaStyles).toHaveProperty("card");
     expect(mediaStyles).toHaveProperty("media");
     expect(mediaStyles).toHaveProperty("videoOverlay");
+  });
+
+  it("Knowledge graph styles expose expected keys", () => {
+    const graphStyles = createKnowledgeGraphStyles();
+    expect(graphStyles).toHaveProperty("container");
+    expect(graphStyles).toHaveProperty("canvas");
+    expect(graphStyles).toHaveProperty("node");
+    expect(graphStyles).toHaveProperty("edge");
   });
 });

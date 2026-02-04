@@ -16,6 +16,26 @@ export const createSettingsScreenStyles = () =>
     section: {
       gap: uiTokens.spacing(12),
     },
+    sliderRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: uiTokens.spacing(8),
+    },
+    slider: {
+      flex: 1,
+      height: uiTokens.spacing(24),
+    },
+    sliderLabel: {
+      fontSize: uiTokens.font(12),
+      color: "#666666",
+      fontWeight: "600",
+    },
+    sliderValue: {
+      fontSize: uiTokens.font(12),
+      color: "#1d9bf0",
+      fontWeight: "700",
+      textTransform: "uppercase",
+    },
     subtitle: {
       color: "#555555",
       fontSize: uiTokens.font(16),

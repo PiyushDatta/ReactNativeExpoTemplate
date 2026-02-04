@@ -26,6 +26,61 @@ mock.module("react-native", () => {
     addListener: () => ({ remove: () => {} }),
     removeListener: () => {},
   };
+  const Animated = {
+    ValueXY: function ValueXY(this: any, value: { x: number; y: number }) {
+      this.x = value.x;
+      this.y = value.y;
+      this.__listeners = [];
+      this.setValue = (next: { x: number; y: number }) => {
+        this.x = next.x;
+        this.y = next.y;
+        this.__listeners.forEach((listener: any) =>
+          listener({ x: this.x, y: this.y }),
+        );
+      };
+      this.addListener = (listener: any) => {
+        this.__listeners.push(listener);
+        return listener;
+      };
+      this.removeListener = (listener: any) => {
+        this.__listeners = this.__listeners.filter(
+          (item: any) => item !== listener,
+        );
+      };
+      this.stopAnimation = (cb?: any) => cb?.({ x: this.x, y: this.y });
+      this.getTranslateTransform = () => [
+        { translateX: this.x },
+        { translateY: this.y },
+      ];
+    },
+    View: ({ children, ...props }: any) =>
+      React.createElement("AnimatedView", props, children),
+    Text: ({ children, ...props }: any) =>
+      React.createElement("AnimatedText", props, children),
+    Image: ({ children, ...props }: any) =>
+      React.createElement("AnimatedImage", props, children),
+    createAnimatedComponent: (Component: any) => Component,
+    timing: () => ({ start: (cb?: any) => cb?.() }),
+    spring: (_value: any, { toValue }: any) => ({
+      start: (cb?: any) => {
+        if (_value?.setValue) {
+          _value.setValue(toValue);
+        }
+        cb?.();
+      },
+    }),
+    Value: function Value(this: any, val: number) {
+      this._value = val;
+      this.setValue = (next: number) => {
+        this._value = next;
+      };
+    },
+  };
+  const PanResponder = {
+    create: (handlers: any) => ({
+      panHandlers: handlers,
+    }),
+  };
 
   const FlatList = ({ data = [], renderItem, keyExtractor, ...rest }: any) =>
     React.createElement(
@@ -87,23 +142,6 @@ mock.module("react-native", () => {
     getPixelSizeForLayoutSize: (size: number) => size,
     roundToNearestPixel: (size: number) => size,
   };
-  const Animated = {
-    View: ({ children, ...props }: any) =>
-      React.createElement("AnimatedView", props, children),
-    Text: ({ children, ...props }: any) =>
-      React.createElement("AnimatedText", props, children),
-    Image: ({ children, ...props }: any) =>
-      React.createElement("AnimatedImage", props, children),
-    createAnimatedComponent: (Component: any) => Component,
-    timing: () => ({ start: (cb?: any) => cb?.() }),
-    spring: () => ({ start: (cb?: any) => cb?.() }),
-    Value: function Value(this: any, val: number) {
-      this._value = val;
-      this.setValue = (next: number) => {
-        this._value = next;
-      };
-    },
-  };
 
   return {
     View,
@@ -115,11 +153,12 @@ mock.module("react-native", () => {
     SafeAreaView,
     Image,
     Keyboard,
+    PanResponder,
+    Animated,
     StyleSheet,
     Platform,
     I18nManager,
     Easing,
-    Animated,
     PixelRatio,
 
     Dimensions: {

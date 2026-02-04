@@ -23,6 +23,10 @@ export const computeFeatures = (
       env.EXPO_PUBLIC_FEATURE_PROFILE_SCREEN,
       false,
     ),
+    enableKnowledgeGraphScreen: readEnvFlag(
+      env.EXPO_PUBLIC_FEATURE_KNOWLEDGE_GRAPH_SCREEN,
+      false,
+    ),
   }) as const;
 
 export const features = computeFeatures();

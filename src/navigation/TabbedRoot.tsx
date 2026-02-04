@@ -7,6 +7,7 @@ import { MediaScrollScreen } from "../screens/MediaScrollScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
 import { SettingsScreen } from "../screens/SettingsScreen";
 import { TabOneScreen } from "../screens/TabOneScreen";
+import { KnowledgeGraphScreen } from "../screens/KnowledgeGraphScreen";
 import { features } from "../config/features";
 
 type TabsParamList = {
@@ -14,6 +15,7 @@ type TabsParamList = {
   TabOne: undefined;
   Media: undefined;
   Profile: undefined;
+  Knowledge: undefined;
   Settings: undefined;
 };
 
@@ -41,6 +43,16 @@ export function TabbedRoot() {
               title: "Media Scroll",
               headerShown: false,
               tabBarStyle: { display: "none" },
+            }}
+          />
+        ) : null}
+        {features.enableKnowledgeGraphScreen ? (
+          <Tab.Screen
+            name="Knowledge"
+            component={KnowledgeGraphScreen}
+            options={{
+              title: "Knowledge Graph",
+              headerShown: false,
             }}
           />
         ) : null}

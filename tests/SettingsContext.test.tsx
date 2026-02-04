@@ -6,11 +6,13 @@ import { SettingsProvider, useSettings } from "../src/context/SettingsContext";
 import { uiSettings } from "../src/config/uiSettings";
 
 const SettingsProbe = () => {
-  const { size, setSize } = useSettings();
+  const { size, setSize, elasticity, setElasticity } = useSettings();
   return (
     <>
       <TextNode label={`size:${size}`} />
+      <TextNode label={`elasticity:${elasticity}`} />
       <Press label="set-large" onPress={() => setSize("large")} />
+      <Press label="set-soft" onPress={() => setElasticity(0.45)} />
     </>
   );
 };
@@ -37,5 +39,10 @@ describe("SettingsContext", () => {
 
     expect(getByText("size:large")).toBeTruthy();
     expect(uiSettings.size).toBe("large");
+
+    fireEvent.press(getByLabelText("set-soft"));
+
+    expect(getByText("elasticity:0.45")).toBeTruthy();
+    expect(uiSettings.elasticity).toBe(0.45);
   });
 });
