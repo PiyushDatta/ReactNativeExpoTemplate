@@ -19,6 +19,10 @@ export const computeFeatures = (
       false,
     ),
     enableMediaScreen: readEnvFlag(env.EXPO_PUBLIC_FEATURE_MEDIA_SCREEN, false),
+    enableProfileScreen: readEnvFlag(
+      env.EXPO_PUBLIC_FEATURE_PROFILE_SCREEN,
+      false,
+    ),
   }) as const;
 
 export const features = computeFeatures();

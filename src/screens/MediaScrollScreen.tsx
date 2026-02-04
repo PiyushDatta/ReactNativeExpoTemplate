@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { useSettings } from "../context/SettingsContext";
 import { createMediaScrollStyles } from "../styles/MediaScrollScreenStyles";
+import { features } from "../config/features";
 
 type PostType = "text" | "image" | "video";
 
@@ -148,9 +149,11 @@ export function MediaScrollScreen() {
 
       <FlatList
         key={`media-scroll-${refreshKey}`}
+        testID="media-feed"
         data={SAMPLE_POSTS}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.list}
+        extraData={refreshKey}
         renderItem={({ item }) => (
           <View style={styles.card}>
             <View style={styles.header}>
@@ -176,7 +179,13 @@ export function MediaScrollScreen() {
         <Pressable onPress={handleRefresh}>
           <Text style={styles.bottomItem}>Alerts</Text>
         </Pressable>
-        <Pressable onPress={handleRefresh}>
+        <Pressable
+          onPress={() =>
+            features.enableProfileScreen
+              ? navigation.navigate("Profile")
+              : handleRefresh()
+          }
+        >
           <Text style={styles.bottomItem}>Profile</Text>
         </Pressable>
       </View>

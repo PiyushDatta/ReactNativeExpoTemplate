@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { HomeScreen } from "../screens/HomeScreen";
 import { MediaScrollScreen } from "../screens/MediaScrollScreen";
+import { ProfileScreen } from "../screens/ProfileScreen";
 import { SettingsScreen } from "../screens/SettingsScreen";
 import { TabOneScreen } from "../screens/TabOneScreen";
 import { features } from "../config/features";
@@ -12,6 +13,7 @@ type TabsParamList = {
   Main: undefined;
   TabOne: undefined;
   Media: undefined;
+  Profile: undefined;
   Settings: undefined;
 };
 
@@ -40,6 +42,13 @@ export function TabbedRoot() {
               headerShown: false,
               tabBarStyle: { display: "none" },
             }}
+          />
+        ) : null}
+        {features.enableProfileScreen ? (
+          <Tab.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{ title: "Profile" }}
           />
         ) : null}
         {features.enableSettingsScreen ? (

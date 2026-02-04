@@ -13,6 +13,9 @@ export const createSettingsScreenStyles = () =>
       fontSize: uiTokens.font(24),
       fontWeight: "600",
     },
+    section: {
+      gap: uiTokens.spacing(12),
+    },
     subtitle: {
       color: "#555555",
       fontSize: uiTokens.font(16),
